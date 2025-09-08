@@ -49,6 +49,14 @@ print(df_reemplazo_promedio)
 input('Presiona enter para continuar\n')
 
 #agregamos una columna al dataframe, la columna estatura
-df['Estatura'] = [1.78,1.80, None, 1.68]
+df['Estatura']=[1.78,1.80,None,1.68]
 print('Nuevo dataframe con estaturas:')
 print(df)
+input('Presiona enter para continuar\n')
+#llenaremos los nulos de la columna estatura con el promedio de estaturas
+#primero debemos calcular el promedio
+promedio_estatura=df['Estatura'].mean(skipna=True)#calcula el promedio ignorando los nulos
+df_reemplazo_prom_est=df.copy()#tomamos una copia del dataframe para limpiar la columna estatura
+df_reemplazo_prom_est['Estatura']=df_reemplazo_prom_est['Estatura'].fillna(promedio_estatura)
+print('Dataframe con valores nulos en la columna Estatura, reemplazados por el promedio:')
+print(df_reemplazo_prom_est)
